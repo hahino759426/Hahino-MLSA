@@ -1,5 +1,17 @@
 # V9-LONG — Mixed-Link Spatial Attention
 
+## A neural network that learns without backpropagation—and gets better when links can be negative
+
+V9-LONG is not another MNIST demo. It is a controlled experiment in how far purely local learning can go. The network uses fixed Sobel features, spatial clusters, and path-level competition instead of a global training signal.
+
+The surprising part is the ablation: **forcing every link to be positive collapses accuracy to 69.07%, while allowing mixed-sign links reaches 94.45% under the short schedule and 95.32% with V9-LONG.** Local inhibition is not an implementation detail here; it is the mechanism that makes the architecture work.
+
+This makes the project unusual in three ways:
+
+- **Learning happens locally.** Every cluster updates from its own error—no backpropagation, global loss, `nn.Linear`, or `nn.Parameter`.
+- **The architecture is the experiment.** Mixed links, spatial receptive fields, and path-level push-pull routing are tested against a strict nonnegative control, not presented as untested biological metaphors.
+- **Everything is reproducible.** The repository includes the full pipeline, tests, confusion matrices, checkpoints, and an honest account of both the successful result and the failed alternatives.
+
 **Mixed-Link Spatial Attention with Path-Level Push-Pull Routing** is a local-learning MNIST network that reaches **95.32% test accuracy** without backpropagation, a global loss, `nn.Linear`, or `nn.Parameter`.
 
 ## What makes this project special
