@@ -33,7 +33,7 @@ def stratified_split(images, labels, validation_split=0.2, seed=23):
 
 
 def full_mnist_data():
-    root = Path(os.environ.get("MNIST_DATA_DIR", Path(__file__).resolve().parent / "data" / "MNIST" / "raw"))
+    root = Path(os.environ.get("MNIST_DATA_DIR", Path(__file__).resolve().parents[1] / "data" / "MNIST" / "raw"))
     train_x = read_idx(root / "train-images-idx3-ubyte").astype(np.float32) / 255.0
     train_y = read_idx(root / "train-labels-idx1-ubyte")
     test_x = read_idx(root / "t10k-images-idx3-ubyte").astype(np.float32) / 255.0

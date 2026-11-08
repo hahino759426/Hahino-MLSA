@@ -124,19 +124,15 @@ No checkpoints, JSON result files, or PNG graphs are tracked by Git. Run the scr
 ## Repository contents
 
 ```text
-v9_8_network.py             Mixed-link spatial attention model and learning rules
-v9_diagonal.py              Diagonal spatial model and pruning support
-v9_pruning.py               Utilization pruning and frozen-link masks
-fixed_retina.py             Horizontal/vertical Sobel preprocessing
-fixed_retina_diagonal.py    Added 45° and 135° filters
-data.py                     IDX loading and normalization
-metrics.py                  Confusion matrix and recalls
-run_v9_8.py                 Standard three-phase pipeline
-run_v9_long.py              Extended 20+5+20 schedule
-run_v9_diagonal.py          Diagonal from-scratch experiment
-run_v9_diagonal_pruned.py   Pruned diagonal co-adaptation
-test_*.py                   Architecture, schedule, and pruning tests
+src/                    Models, retinas, data loading, metrics, and runners
+tests/                  Architecture, schedule, and pruning tests
+docs/PAPER.md           Ablation narrative and architecture discussion
+README.md               Project overview and reproduction guide
+LICENSE                 Apache License 2.0
+requirements.txt        Python dependencies
 ```
+
+Generated checkpoints, JSON results, and PNG graphs are not tracked by Git. Run the scripts to generate them locally.
 
 ## Setup
 
@@ -160,21 +156,21 @@ Alternatively, set `MNIST_DATA_DIR` to an existing directory containing those fi
 ## Run tests
 
 ```bash
-python -m unittest test_v9_8_fixed.py test_v9_long.py test_v9_diagonal.py test_v9_diagonal_pruned.py
+python -m unittest discover -s tests
 ```
 
 ## Reproduce the 96.57% model
 
 ```bash
-python -u run_v9_diagonal.py
+python -u src/run_v9_diagonal.py
 ```
 
 With a custom data directory:
 
 ```bash
-MNIST_DATA_DIR=/path/to/MNIST/raw python -u run_v9_diagonal.py
+MNIST_DATA_DIR=/path/to/MNIST/raw python -u src/run_v9_diagonal.py
 ```
 
 Training starts from scratch with seed 42 and does not load a checkpoint. The diagonal run took **133.37 seconds** on CUDA. V9-LONG took **101.53 seconds**.
 
-See `PAPER.md` for the ablation narrative and architecture discussion.
+See `docs/PAPER.md` for the ablation narrative and architecture discussion.
