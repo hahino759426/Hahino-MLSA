@@ -1,6 +1,9 @@
 __pycache__/
 *.pyc
-results_long/best.json
-results_long/phase1.json
-results_long/phase2.json
-results_long/phase3.json
+.venv/
+.env
+data/MNIST/raw/
+*.json
+!requirements.txt
+!experiments/results.json
+*.png
