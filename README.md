@@ -174,3 +174,8 @@ MNIST_DATA_DIR=/path/to/MNIST/raw python -u src/run_v9_diagonal.py
 Training starts from scratch with seed 42 and does not load a checkpoint. The diagonal run took **133.37 seconds** on CUDA. V9-LONG took **101.53 seconds**.
 
 See `docs/PAPER.md` for the ablation narrative and architecture discussion.
+
+
+## Related project: Hahino-LSLM
+
+The local-learning and memory-pool research developed in this repository is used in [Hahino-LSLM](https://github.com/hahino759426/Hahino-LSLM), a standalone word-level language-model project. The LSLM repository contains the language-model implementation, analysis, and V5.5 champion results; this repository remains focused on MLSA.
